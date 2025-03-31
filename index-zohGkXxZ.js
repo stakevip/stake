@@ -1,0 +1,18 @@
+(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const l of r.addedNodes)l.tagName==="LINK"&&l.rel==="modulepreload"&&i(l)}).observe(document,{childList:!0,subtree:!0});function a(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(e){if(e.ep)return;e.ep=!0;const r=a(e);fetch(e.href,r)}})();const m=[{name:"Non VIP",chineseName:"非 VIP",wagerRequirement:0},{name:"Bronze",chineseName:"青铜",wagerRequirement:1e4},{name:"Silver",chineseName:"白银",wagerRequirement:5e4},{name:"Gold",chineseName:"黄金",wagerRequirement:1e5},{name:"Platinum I",chineseName:"铂金 I",wagerRequirement:25e4},{name:"Platinum II",chineseName:"铂金 II",wagerRequirement:5e5},{name:"Platinum III",chineseName:"铂金 III",wagerRequirement:1e6},{name:"Platinum IV",chineseName:"铂金 IV",wagerRequirement:25e5},{name:"Platinum V",chineseName:"铂金 V",wagerRequirement:5e6},{name:"Platinum VI",chineseName:"铂金 VI",wagerRequirement:1e7},{name:"Diamond I",chineseName:"钻石 I",wagerRequirement:25e6},{name:"Diamond II",chineseName:"钻石 II",wagerRequirement:5e7},{name:"Diamond III",chineseName:"钻石 III",wagerRequirement:1e8},{name:"Diamond IV",chineseName:"钻石 IV",wagerRequirement:25e7},{name:"Diamond V",chineseName:"钻石 V",wagerRequirement:5e8},{name:"Obsidian",chineseName:"黑曜石",wagerRequirement:1e9}],s=document.getElementById("vipProgress"),u=document.getElementById("progressBar"),v=document.querySelector(".progress-bar-container"),f=document.getElementById("current_rank"),g=document.getElementById("result");function p(t){return(typeof t=="string"?parseFloat(t):t).toLocaleString("zh-CN")}function d(t){const n=Math.min(Math.max(t,0),100);u.style.width=`${n}%`,n<33?u.style.background="rgb(239, 68, 68)":n<66?u.style.background="rgb(249, 115, 22)":u.style.background="rgb(34, 197, 94)",v.setAttribute("aria-valuenow",n.toString())}function o(){let t=parseFloat(s.value)||0;t<0?(t=0,s.value="0"):t>100&&(t=100,s.value="100");const n=f.value,a=m.find(c=>c.name===n);if(!a)return;const i=m.findIndex(c=>c.name===n),e=m[i+1];if(!e){g.innerHTML=`您已经达到了最高VIP等级 (${a.chineseName})`;return}const r=e.wagerRequirement-a.wagerRequirement,l=r*(t/100),I=r-l;g.innerHTML=`
+    <div class="result-item">
+      <span class="result-label">您当前的VIP等级是：</span>
+      <span class="result-value">${a.chineseName}</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">下一个VIP等级是：</span>
+      <span class="result-value">${e.chineseName}</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">达到下一个VIP等级还需要投注：</span>
+      <span class="result-value">$${p(I.toFixed(2))}</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">总投注额要求：</span>
+      <span class="result-value">$${p(r.toFixed(2))}</span>
+    </div>
+  `}function h(){if(window.addEventListener("resize",()=>{s.value&&o()}),s.addEventListener("input",t=>{let n=t.target.value;if(n.includes(".")){const i=n.split(".");i[1].length>2&&(n=i[0]+"."+i[1].substring(0,2),s.value=n)}let a=parseFloat(n)||0;a<0?(a=0,s.value="0"):a>100&&(a=100,s.value="100"),d(a),o()}),s.addEventListener("touchend",()=>{s.blur()}),f.addEventListener("change",o),d(0),o(),s.value){const t=parseFloat(s.value)||0;d(t)}}document.addEventListener("DOMContentLoaded",h);
