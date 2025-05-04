@@ -16,7 +16,7 @@
       <span class="result-value">$${d(v.toFixed(2))}</span>
     </div>
     <div class="result-item">
-      <span class="result-label">总投注额要求：</span>
+      <span class="result-label">下一个VIP等级总投注额要求：</span>
       <span class="result-value">$${d(t.toFixed(2))}</span>
     </div>
   `}function w(){if(window.addEventListener("resize",()=>{s.value&&c()}),s.addEventListener("input",e=>{let r=e.target.value;if(r.includes(".")){const i=r.split(".");i[1].length>2&&(r=i[0]+"."+i[1].substring(0,2),s.value=r)}let a=parseFloat(r)||0;a<0?(a=0,s.value="0"):a>100&&(a=100,s.value="100"),p(a),c()}),s.addEventListener("touchend",()=>{s.blur()}),f.addEventListener("change",c),p(0),c(),s.value){const e=parseFloat(s.value)||0;p(e)}}document.addEventListener("DOMContentLoaded",w);
