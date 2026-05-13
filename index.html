@@ -18,8 +18,8 @@
   <link rel="icon" href="./assets/favicon-Br3vGa6R.ico" type="image/x-icon">
   <link rel="shortcut icon" href="./assets/favicon-Br3vGa6R.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <script type="module" crossorigin src="./assets/index-s77KInTw.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-Cs4oB6gR.css">
+  <script type="module" crossorigin src="./assets/index-D6i6Liov.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Zvjg1xfI.css">
 </head>
 
 <body>
@@ -112,8 +112,19 @@
                   <option value="Obsidian">黑曜石</option>
                 </select>
               </div>
+              <button id="reward-table-btn" class="reward-table-btn" title="查看VIP奖励表格">
+                <span class="btn-text">查看奖励</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 6 9z"></path>
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 17 7 18 9z"></path>
+                  <path d="M4 22h16"></path>
+                  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"></path>
+                  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"></path>
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+                </svg>
+              </button>
               <button id="share-btn" class="share-btn" title="分享计算结果">
-                点击分享
+                <span class="btn-text">点击分享</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="18" cy="5" r="3"></circle>
                   <circle cx="6" cy="12" r="3"></circle>
@@ -186,6 +197,35 @@
   </div>
   <div id="lang-switch" style="position: fixed; right: 24px; bottom: 24px; z-index: 9999;">
     <button id="langToggleBtn" style="padding: 8px 16px; border-radius: 20px; border: none; background: #222; color: #fff; cursor: pointer; font-size: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">EN</button>
+  </div>
+
+  <!-- VIP奖励表格弹窗 -->
+  <div id="reward-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button id="modal-close-btn" class="modal-close-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <h2 class="modal-title">Stake VIP 等级奖励表</h2>
+      
+      <!-- 平台切换标签 -->
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-platform="stake">Stake</button>
+        <button class="modal-tab" data-platform="shuffle">Shuffle</button>
+      </div>
+      
+      <!-- Stake 表格 -->
+      <div id="stake-table" class="modal-table-wrapper active">
+        <table class="reward-table"></table>
+      </div>
+      
+      <!-- Shuffle 表格 -->
+      <div id="shuffle-table" class="modal-table-wrapper">
+        <table class="reward-table"></table>
+      </div>
+    </div>
   </div>
 </body>
 
